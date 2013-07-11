@@ -1,0 +1,113 @@
+/*
+ * Import nib
+ */
+body {
+  background: gradient(linear, left top, left bottom, from(#e5e5e5), to(#eee)) fixed;
+  margin: 0px;
+  font-family: fantasy;
+}
+h1 {
+  font-weight: bold;
+  font-size: xx-large;
+}
+h2 {
+  font-weight: bold;
+  font-size: x-large;
+}
+h3 {
+  font-weight: bold;
+  font-size: large;
+}
+strong {
+  font-weight: bold;
+}
+.hidden {
+  visibility: hidden;
+}
+header {
+  margin: 0px;
+  padding: 0px;
+}
+nav#top {
+  position: absolute;
+  top: 0;
+  background-color: #000;
+  color: #b5b5b5;
+  width: 100%;
+  height: 2em;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0px;
+  -webkit-box-shadow: 0px 0px 5px #000;
+  box-shadow: 0px 0px 5px #000;
+}
+nav#top p {
+  margin-top: 7px;
+}
+nav#top p a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 10px;
+  font-size: small;
+}
+nav#top p a:hover {
+  text-decoration: underline;
+}
+nav#top p a:active {
+  text-decoration: underline;
+}
+section#wrapper {
+  top: 50px;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+#main {
+  top: 30px;
+  background-color: #fff;
+  border: 1px solid #d2d0d0;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  width: 800px;
+  margin: auto;
+  margin-top: 10px;
+  padding: 0px 10px 10px 10px;
+}
+.twoColumn {
+  margin-top: 10px;
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+  -webkit-column-gap: 5px;
+  -moz-column-gap: 5px;
+  column-gap: 5px;
+}
+.twoColumn li {
+  padding-bottom: 5px;
+}
+.twoColumn li.head {
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+.page_header h2 {
+  border-bottom: 1px solid #d9d7d7;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  font-size: large;
+}
+footer {
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+footer .copyright {
+  font-size: small;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+code {
+  background-color: #e5e5e5;
+}

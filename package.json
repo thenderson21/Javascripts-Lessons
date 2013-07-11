@@ -1,0 +1,14 @@
+{
+  "name": "JavaScript-Lessons",
+  "version": "0.0.1",
+  "private": "true",
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "3.3.x",
+    "jade": "0.32.x",
+    "stylus": "0.33.x",
+    "nib": "0.9.x"
+  }
+}

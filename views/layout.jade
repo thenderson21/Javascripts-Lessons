@@ -1,0 +1,25 @@
+!!!5
+html
+	head
+		block pageTitle
+		
+		script(src='http://code.jquery.com/jquery-1.9.1.js')
+		script(src='http://code.jquery.com/ui/1.10.3/jquery-ui.js')
+		script(src='http://yandex.st/highlightjs/7.3/highlight.min.js')
+		
+		link(rel='stylesheet', href='http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css')
+		link(rel='stylesheet', href='http://yandex.st/highlightjs/7.3/styles/xcode.min.css')
+		link(rel='stylesheet', href='/css/stylesheet.css')
+	body
+		header
+			nav#top 
+				p JavaScript 
+					block navigation
+				
+		section#wrapper		
+			article#main
+				
+				block content
+							
+			footer
+				.copyright Copyright &copy; 2013 - Todd Henderson

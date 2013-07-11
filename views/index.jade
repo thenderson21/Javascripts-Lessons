@@ -1,0 +1,30 @@
+extend layout
+
+block pageTitle
+	title #{title}
+
+block navigation
+
+block content
+	.page_header
+		h2 Javascript Lessons
+	p.
+		Javascript programming lessons.
+	
+	.twoColumn
+		div
+			ul
+				li.head
+					strong Lessons
+				li
+					a(href='intro') Introduction  
+				li 
+					a(href='varriables') Varriables 
+		div	
+			ul
+				li.head
+					strong Exercises
+				li
+					a(href='helloWorld') Hello World! 
+				li
+					a(href='hello<name>') Hello {name}!
