@@ -9,22 +9,24 @@ block content
 	.page_header
 		h2 Javascript Lessons
 	p.
-		Javascript programming lessons.
+		Welcome to the the JavaScript Lessons training site. 
 	
 	.twoColumn
 		div
-			ul
+			ul.toc#lessons
 				li.head
 					strong Lessons
 				li
 					a(href='intro') Introduction  
 				li 
-					a(href='varriables') Varriables 
+					//a(href='varriables') Varriables 
+					| Varriables
 		div	
-			ul
+			ul.toc#excercises
 				li.head
 					strong Exercises
 				li
 					a(href='helloWorld') Hello World! 
 				li
-					a(href='hello<name>') Hello {name}!
+					//a(href='hello{name}') Hello {name}!
+					| Hello {name}!

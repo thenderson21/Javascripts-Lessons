@@ -111,3 +111,9 @@ footer .copyright {
 code {
   background-color: #e5e5e5;
 }
+.results {
+  width: 100%;
+  background-color: #e5e5e5;
+  padding: 10px 10px;
+  border: 1px solid #ccc;
+}

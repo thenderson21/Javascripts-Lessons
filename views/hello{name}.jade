@@ -1,0 +1,115 @@
+extend layout
+
+block pageTitle
+	title #{title} :: Hello {name}!
+
+block navigation
+	&#58;&#58; intro 
+	a(href='index') Home
+
+block headerScripts
+	script(type='text/javascript')
+		hljs.tabReplace = ' ';
+		hljs.initHighlightingOnLoad();
+		
+		$(function() {
+			var $tabs = $("#tabs");
+			$tabs.tabs();
+			
+			$('#unhide').on('click', function(evt){
+				$tabs.toggleClass('hidden');
+				$this = $(this).toggleClass('active');
+				if($this.hasClass('active')){
+					$this.text('Hide Solution');
+				}else{
+					$this.text('Show Solution');
+				}
+			});
+		});	
+
+block content
+	.page_header
+		h2 Exercise 2: Hello {name}!
+	p
+		strong Assigmnent:
+		&emsp;Write a JavaScript program that get the users name and outputs "Hello {Name}!", 
+		where {Name} is the users name.
+	
+	p
+		strong Background:
+		&emsp; Printing "Hello World!" is cool and all, but it is pretty useless. User interaction is what we are all about.
+	
+	p
+		strong Solution:
+		&emsp;
+		a(href="#")#unhide Show Solution
+	
+	.not-hidden#tabs
+		ul
+			li
+				a(href="#tabs-1")	Vanilla JS
+			li
+				a(href="#tabs-2")	jQuery
+				
+		div#tabs-1
+			pre
+				code.javascript
+					| var jsDiv = document.getElementById('js');
+					| document.forms["jsForm"].onsubmit = function(evt){
+					| 	jsDiv.innerText = 'Hello '+ document.forms["jsForm"].name.value +'!'; 
+					| 	
+					| 	//Prevents form from submitting and reloading the page.
+					| 	return false;
+					| };
+					|
+					| 
+					
+			form(name="jsForm")
+				| Name: 
+				input(type="text", name="name")
+				input(type="submit")
+			
+			strong Results:
+			.results#js
+				Hello {Name}!
+			script
+				var jsDiv = document.getElementById('js');
+				document.forms["jsForm"].onsubmit = function(){
+					jsDiv.innerText = 'Hello '+ document.forms["jsForm"].name.value +'!'; 
+					return false;
+				} 
+		
+		div#tabs-2
+			pre
+				code.javascript			
+					| var $jqueryForm = $('#jQueryForm');
+					| var $jqueryDiv = $('#jquery');
+					| 
+					| $jqueryForm.on('submit', function(evt){
+					| 	$jqueryDiv.text('Hello ' + $(this).find('input[name="name"]').val() +'!');
+					| 	
+					| 	//Prevents form from submitting and reloading the page.
+					| 	return false;					
+					| });
+			form#jQueryForm
+				| Name: 
+				input(type="text", name="name")
+				input(type="submit")		
+			strong Results:
+			.results#jquery
+				Hello {Name}!
+			script
+				var $jqueryForm = $('#jQueryForm');
+				var $jqueryDiv = $('#jquery');
+				$jqueryForm.on('submit', function(evt){
+					$jqueryDiv.text('Hello ' + $(this).find('input[name="name"]').val() +'!');
+					return false;					
+				});
+
+		div
+			strong Note:
+			| &emsp;In jQuery <code>return false</code> is effectively the same as running both 					| <code>evt.preventDefault</code> and <code>evt.stopPropagation</code>, where in
+			| Vanilla JS it does not stop the propagation of events (bubbling). It is generally
+			| preferred to use <code>evt.preventDefault</code> in jQuery.
+
+

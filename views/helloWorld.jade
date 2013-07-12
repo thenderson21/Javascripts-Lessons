@@ -1,13 +1,13 @@
 extend layout
 
 block pageTitle
-	title #{title} :: intro
+	title #{title} :: Hello World!
 
 block navigation
-	&#58;&#58; intro 
+	&#58;&#58; Hello World! 
 	a(href='index') Home
 
-block scripts
+block headerScripts
 	script(type='text/javascript')
 		hljs.tabReplace = ' ';
 		hljs.initHighlightingOnLoad();
@@ -30,73 +30,75 @@ block scripts
 block content
 	.page_header
 		h2 Exercise 1: Hello World!
-		p.
-			strong Assigmnent:
-			br
-			&emsp;Write a JavaScript program that outputs "Hello World!"
-		
-		p.
-			strong Background:
-			br
-			&emsp;The hello world program is the most basic program. It all starts here.
-		
-		p
-			strong Solution:
-			br
-			&emsp;
-			a(href="#")#unhide Show Solution
-		
-		div.tabs#hidden
-			ul
-				li: a(href="#tabs-1")Vanilla JS
-				li: a(href="#tabs-2")Vanilla JS No HTML
-				li: a(href="#tabs-3")jQuery
-
+	p
+		strong Assigmnent:
+		br
+		&emsp;Write a JavaScript program that outputs "Hello World!"
+	
+	p
+		strong Background:
+		br
+		&emsp;The hello world program is the most basic program. It all starts here.
+	
+	p
+		strong Solution:
+		br
+		&emsp;
+		a(href="#")#unhide Show Solution
+	
+	.not-hidden#tabs
+		ul
+			li
+				a(href="#tabs-1")	Vanilla JS
+			li
+				a(href="#tabs-2")	Vanilla JS No HTML
+			li
+				a(href="#tabs-3")	jQuery
+				
 		div#tabs-1
 			pre
-				code
-//Vanilla JS
-document.getElementById('js').innerText = 'Hello World!';
-
-//or
-
-var jsDiv = document.getElementById('js');
-jsDiv.innerText = 'Hello World!'; 
-
-
+				code.javascript
+					| //Vanilla JS
+					| document.getElementById('js').innerText = 'Hello World!';
+					| 
+					| //or
+					| 
+					| var jsDiv = document.getElementById('js');
+					| jsDiv.innerText = 'Hello World!'; 
+					|  
+					
 			strong Results:
 			.results#js
 			script
 				var jsDiv = document.getElementById('js');
 				jsDiv.innerText = 'Hello World!'; 
 
-		div#tabs-2"
+		div#tabs-2
 			pre
-				code
-//Vanilla JS No HTML
-document.write("Hello World!");
-
-//or
-
-document.writeln("Hello World!");  //Adds a newline (Return) to the end of the string.
-// NOTE: To display Actual Results copy and paste either statement to the console
-// in your browser.
+				code.javascript
+					| //Vanilla JS No HTML
+					| document.write("Hello World!");
+					| 
+					| //or
+					| 
+					| document.writeln("Hello World!");  //Adds a newline (Return) to the end of the string.
+					| // NOTE: To display Actual Results copy and paste either statement to the console
+					| // in your browser.
 
 			strong Results:
 			.results#js-noHtmp
-					Hello World!
-			
+				| Hello World!
+		
 		div#tabs-3
 			pre
-				code			
-//jQuery
-$('#jquery').text('Hello World!'); 
-
-//or
-
-var $jqueryDiv = $('#jquery');
-$jqueryDiv.text('Hello World!');
-
+				code.javascript			
+					| //jQuery
+					| $('#jquery').text('Hello World!'); 
+					| 
+					| //or
+					| 
+					| var $jqueryDiv = $('#jquery');
+					| $jqueryDiv.text('Hello World!'); 
 			strong Results:
 			.results#jquery
 			script
@@ -105,16 +107,15 @@ $jqueryDiv.text('Hello World!');
 
 		div
 			strong Note:
-			br
 			pre
-            	code.javascript
-var jsDiv = document.getElementById('js').innerText = 'Hello World!'; 
-
-// jsDiv === 'Hello World!'
-
-var $jqueryDiv = $('#jquery').text('Hello World!');   
-
-// $jqueryDiv === [&lt;div id="jquery" class="results"&gt;Hello World!&lt;/div&gt;]
+				code.javascript
+					| var jsDiv = document.getElementById('js').innerText = 'Hello World!'; 
+					| 
+					| // jsDiv === 'Hello World!'
+					| 
+					| var $jqueryDiv = $('#jquery').text('Hello World!');   
+					| 
+					| // $jqueryDiv === [&lt;div id="jquery" class="results"&gt;Hello World!&lt;/div&gt;]
 
 
 

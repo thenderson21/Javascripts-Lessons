@@ -36,3 +36,6 @@
 Icon?
 ehthumbs.db
 Thumbs.db
+
+#Node JS stuff
+node_modules/
