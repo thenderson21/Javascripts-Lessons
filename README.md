@@ -13,10 +13,12 @@ or
 Copy and past the following into your commandline
 ````bash
 git clone https://github.com/thenderson21/Javascripts-Lessons.git
-cd avascripts-Lessons
+cd Javascripts-Lessons
 npm install
 node app.js
 
 ````
 
-To view lesson goto [http://localhost:3000/](http://localhost:3000/) in your browser.
+Now go to [http://localhost:3000/](http://localhost:3000/) in your browser.
+
+To update the to the latest version go to the location in the terminal and type `git pull`
