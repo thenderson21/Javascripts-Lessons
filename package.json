@@ -1,14 +1,27 @@
 {
   "name": "JavaScript-Lessons",
+  "author": "Todd Henderson <thenderson@spe.org>",
   "version": "0.0.1",
   "private": "true",
   "scripts": {
     "start": "node app"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thenderson21/Javascripts-Lessons.git"
+  },
   "dependencies": {
     "express": "3.3.x",
     "jade": "0.32.x",
+    "markdown-js": "0.0.X",
     "stylus": "0.33.x",
     "nib": "0.9.x"
+  },
+  "devDependencies": {
+    "nodemon":  "0.7.x"
+  },
+  "engines": {
+    "node": ">=0.6"
   }
+  
 }
