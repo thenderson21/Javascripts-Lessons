@@ -1,10 +1,16 @@
 extend layout
 
+block pageHeading
+	| Hello {name}!
+
 block pageTitle
-	title #{title} :: Hello {name}!
+	title #{title} ::
+		block pageHeading
 
 block navigation
-	&#58;&#58; Hello {name}!
+	| &#58;&#58; 
+	#{pageTitle}
+	block pageHeading
 	a(href='index') Home
 
 block headerScripts
@@ -29,7 +35,8 @@ block headerScripts
 
 block content
 	.page_header
-		h2 Exercise 2: Hello {name}!
+		h2 Exercise 2: 
+			block pageHeading
 	p
 		strong Assigmnent:
 		&emsp;Write a JavaScript program that get the users name and outputs "Hello {Name}!", 

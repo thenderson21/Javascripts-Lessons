@@ -1,10 +1,16 @@
 extend layout
 
+block pageHeading
+	| Hello World!
+
 block pageTitle
-	title #{title} :: Hello World!
+	title #{title} ::
+		block pageHeading
 
 block navigation
-	&#58;&#58; Hello World! 
+	| &#58;&#58; 
+	#{pageTitle}
+	block pageHeading
 	a(href='index') Home
 
 block headerScripts
@@ -29,7 +35,8 @@ block headerScripts
 
 block content
 	.page_header
-		h2 Exercise 1: Hello World!
+		h2 Exercise 1: 
+			block pageHeading
 	p
 		strong Assigmnent:
 		br

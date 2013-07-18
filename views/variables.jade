@@ -5,7 +5,7 @@ block pageHeading
 
 block pageTitle
 	title #{title} ::
-	block pageHeading
+		block pageHeading
 
 block navigation
 	| &#58;&#58; 
@@ -13,13 +13,123 @@ block navigation
 	block pageHeading
 	a(href='index') Home
 
+
+block headerScripts
+	script(type='text/javascript')
+		hljs.tabReplace = ' ';
+		hljs.initHighlightingOnLoad();
+		
+		$(function() {
+			var $tabs = $("#tabs");
+			$tabs.tabs();
+			
+			$('#unhide').on('click', function(evt){
+				$tabs.toggleClass('hidden');
+				$this = $(this).toggleClass('active');
+				if($this.hasClass('active')){
+					$this.text('Hide Solution');
+				}else{
+					$this.text('Show Solution');
+				}
+			});
+		});	
+		
 block content
 	.page_header
 		h2 
 			block pageHeading
-		p
-			| Variables are the tools that allow us to temporarily store values. 
-		
-		h3 Reserved Words
 		:markdown
+			Variables are the tools that allow us to temporarily store values by representing a value with a name. 
+			In JavaScript variable names can be just about any visable charicter, but it is best practices for all 
+			varriables to start with a letter, $, or _, and only contain letters and numbers.  Varriables in general 
+			consists of two categories of varriables.  Primitives and Non-Primitives. They varry from language to language,
+			but they are generally considered to be:
+			
+			#### Primitives
+			
+			| Variables	| Description  					|
+			| :--------:| :---------  					|
+			| integer	| A whole number value. 		|
+			| float	 	| A decimal number value. 		|
+			| character | Any ASCII/UNICODE charicter. 	|
+			| boolean	| true or false 				|
+			
+			#### Non-Primitives
+			
+			| Variables | Description									|
+			| :------------: | :---------								|
+			| array			 | Multiple values							|
+			| function		 | A logical grouping of resusable code. 	|
+			| string		 | Multiple characters.						|
+			| object		 | Logical grouping of vars and functions 	|
+
+			Primitives are called that because they can fit directly in a section of memory (byte, word or double), thus can
+			be directly mapped to assembly language.  Non-Primitives take up more that one chunk of memory and have to be
+			intrepreted by the software further. There are several methods for grouping multiple chunks togeather and each
+			have their own trade-offs.  
+			
+			JavaScript by default only has a few types. String, number, boolean, object, function, null and undefined.
+
+			### Typed vs. Untyped vs. Loosely Typed
+			**Typed** or **strongly typed languages** (C family of languages) are languages that the type of varriable *must*
+			be declared when the varriable is instantiated and cannot change type throught the program. 
+			````
+			//C, C++, C#
+			string someString;
+			int someInt = 8;
+			````
+			**Untyped languages** such as JavaScript do not enforce any types.  They may store a type as a definition for varriable
+			checking ie `typeof`. 
+			````
+			//JavaScript
+			var someVar = 8;
+				
+			someVar = 'Not Eight';
+			````
+			
+			**Loose(ly)/Weak(ly) Typed languages** are somewhere in between.  The definition is kinda fuzzy.  Some consider PHP to
+			be a loosely typed language because of the ability to type cast varriables.  Type casting is the ability to state the
+			type a particular variable in that circumstance.  ex: `function someFunction( (boolean)$BoolVar ){//do something}`	
+			````
+			//PHP
+			$someVar = 8;
+			````
+			
+			JavaScript is an Untyped, automaticaly typed, dynamically typed language.  Which means that JavaScrip guesses what the
+			type of a varriable by the context.  **NOTE:** it is still the job of the developer to insure the correct type is used
+			as needed. 
+			Example:
+			````
+			var isLoggedIn = true;
+			var aNumber = 1;
+			
+			if(isLoggedIn){
+				//is true
+			}
+			
+			if(aNumber){
+				//is also true
+			}
+			
+			if(isLoggedIn && aNumber){
+				//is still true
+			}
+			
+			if(isLoggedIn == aNumber){
+				//is true again
+			}
+			//Notice the === instead of == 
+			
+			if(isLoggedIn === aNumber){
+				//is **false** !!
+			}
+			````
+
+			### Prototype vs. Class Based Objects
+			The primary diffrence between the two is that in Prototype languages such as JavaScript all of the variables are a "type"
+			of object. In Class Based languages objects (classes) are "type" of varriable. This is why in JavaScript we can do things
+			like `someVar.length();` on all variables.  In a class based language such as PHP the same thing is done by calling a 
+			separate function `sizeof($someVar);`. 
+			
+			
 			
