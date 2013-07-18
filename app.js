@@ -37,7 +37,7 @@ app.get('/', function (req, res) {
 
 app.get('/:page', function (req, res){
 	res.render(req.params.page,{
-		debug: true,
+		//debug: true,
 		title : 'Javascript Lessons'
 	});
 });
