@@ -1,6 +1,6 @@
 extend layout
 
-block pageHeading
+block pageHeading 
 	| Hello {name}!
 
 block pageTitle
@@ -15,7 +15,7 @@ block navigation
 
 block headerScripts
 	script(type='text/javascript')
-		hljs.tabReplace = ' ';
+		hljs.tabReplace = '    ';
 		hljs.initHighlightingOnLoad();
 		
 		$(function() {
@@ -38,18 +38,17 @@ block content
 		h2 Exercise 2: 
 			block pageHeading
 	p
-		strong Assigmnent:
-		&emsp;Write a JavaScript program that get the users name and outputs "Hello {Name}!", 
-		where {Name} is the users name.
+		h4 Assigmnent:
+		| Write a JavaScript program that get the users name and outputs "Hello {Name}!", 
+		| where {Name} is the users name.
 	
 	p
-		strong Background:
-		&emsp; Printing "Hello World!" is cool and all, but it is pretty useless. User interaction is what we are all about.
+		h4 Background:
+		| Printing "Hello World!" is cool and all, but it is pretty useless. User interaction is what we are all about.
 	
 	p
-		strong Solution:
-		&emsp;
-		a(href="#")#unhide Show Solution
+		h4
+			a(href="#")#unhide Show Solution
 	
 	.hidden#tabs
 		ul
@@ -76,9 +75,9 @@ block content
 				input(type="text", name="name")
 				input(type="submit")
 			
-			strong Results:
+			h4 Results:
 			.results#js
-				Hello {Name}!
+				| Hello {Name}!
 			script
 				var jsDiv = document.getElementById('js');
 				document.forms["jsForm"].onsubmit = function(){
@@ -102,9 +101,9 @@ block content
 				| Name: 
 				input(type="text", name="name")
 				input(type="submit")		
-			strong Results:
+			h4 Results:
 			.results#jquery
-				Hello {Name}!
+				| Hello {Name}!
 			script
 				var $jqueryForm = $('#jQueryForm');
 				var $jqueryDiv = $('#jquery');
@@ -113,9 +112,10 @@ block content
 					return false;					
 				});
 
-		div
-			strong Note:
-			| &emsp;In jQuery <code>return false</code> is effectively the same as running both 					| <code>evt.preventDefault</code> and <code>evt.stopPropagation</code>, where in
+		.note
+			h4 Note:
+			| In jQuery <code>return false</code> is effectively the same as running both 					
+			| <code>evt.preventDefault</code> and <code>evt.stopPropagation</code>, where in
 			| Vanilla JS it does not stop the propagation of events (bubbling). It is generally
 			| preferred to use <code>evt.preventDefault</code> in jQuery.
 

@@ -15,7 +15,7 @@ block navigation
 
 block headerScripts
 	script(type='text/javascript')
-		hljs.tabReplace = ' ';
+		hljs.tabReplace = '    ';
 		hljs.initHighlightingOnLoad();
 		
 		$(function() {
@@ -38,20 +38,16 @@ block content
 		h2 Exercise 1: 
 			block pageHeading
 	p
-		strong Assigmnent:
-		br
-		&emsp;Write a JavaScript program that outputs "Hello World!"
+		h4 Assigmnent:
+		| Write a JavaScript program that outputs "Hello World!"
 	
 	p
-		strong Background:
-		br
-		&emsp;The hello world program is the most basic program. It all starts here.
+		h4 Background:
+		| The hello world program is the most basic program. It all starts here.
 	
 	p
-		strong Solution:
-		br
-		&emsp;
-		a(href="#")#unhide Show Solution
+		h4 
+			a(href="#")#unhide Show Solution
 	
 	.hidden#tabs
 		ul
@@ -76,7 +72,7 @@ block content
 					| jsDiv.innerText = 'Hello World!'; 
 					|  
 					
-			strong Results:
+			h4 Results:
 			.results#js
 			script
 				var jsDiv = document.getElementById('js');
@@ -94,7 +90,7 @@ block content
 					| // NOTE: To display Actual Results copy and paste either statement to the console
 					| // in your browser.
 
-			strong Results:
+			h4 Results:
 			.results#js-noHtmp
 				| Hello World!
 		
@@ -110,7 +106,7 @@ block content
 					| 
 					| 
 
-			strong Results:
+			h4 Results:
 			.results#js-noHtmp
 				| 
 		
@@ -124,14 +120,14 @@ block content
 					| 
 					| var $jqueryDiv = $('#jquery');
 					| $jqueryDiv.text('Hello World!'); 
-			strong Results:
+			h4 Results:
 			.results#jquery
 			script
 				var $jqueryDiv = $('#jquery');
 				$jqueryDiv.text('Hello World!'); 
 
 		div
-			strong Note:
+			h4 Note:
 			pre
 				code.javascript
 					| var jsDiv = document.getElementById('js').innerText = 'Hello World!'; 

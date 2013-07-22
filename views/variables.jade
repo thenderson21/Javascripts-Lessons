@@ -16,23 +16,8 @@ block navigation
 
 block headerScripts
 	script(type='text/javascript')
-		hljs.tabReplace = ' ';
-		hljs.initHighlightingOnLoad();
-		
-		$(function() {
-			var $tabs = $("#tabs");
-			$tabs.tabs();
-			
-			$('#unhide').on('click', function(evt){
-				$tabs.toggleClass('hidden');
-				$this = $(this).toggleClass('active');
-				if($this.hasClass('active')){
-					$this.text('Hide Solution');
-				}else{
-					$this.text('Show Solution');
-				}
-			});
-		});	
+		hljs.tabReplace = '    ';
+		hljs.initHighlightingOnLoad();	
 		
 block content
 	.page_header
@@ -54,16 +39,16 @@ block content
 			| integer	| A whole number value. 		|
 			| float	 	| A decimal number value. 		|
 			| character | Any ASCII/UNICODE character. 	|
-			| boolean	| true or false 				|
+			| boolean	| TRUE or FALSE. 				|
 
 			#### Non-Primitives
 
-			| Variables | Description									|
-			| :------------: | :---------								|
-			| array			 | Multiple values							|
-			| function		 | A logical grouping of resusable code. 	|
-			| string		 | Multiple characters.						|
-			| object		 | Logical grouping of vars and functions 	|
+			| Variables | Description											|
+			| :------------: | :---------										|
+			| array			 | Multiple values.									|
+			| function		 | A logical grouping of resusable code. 			|
+			| string		 | Multiple characters.								|
+			| object		 | Logical grouping of variables and functions. 	|
 
 			Primitives are named as such, because they can fit directly in a section of memory (byte, word or double), thus can
 			be directly mapped to assembly language.  Non-Primitives take up more that one chunk of memory and have to be
@@ -102,10 +87,10 @@ block content
 			as needed. 
 			Example:
 			````
-			var isLoggedIn = true;
+			var aBoolean = true;
 			var aNumber = 1;
 
-			if(isLoggedIn){
+			if(aBoolean){
 				//is true
 			}
 
@@ -113,19 +98,43 @@ block content
 				//is also true
 			}
 
-			if(isLoggedIn && aNumber){
+			if(aBoolean && aNumber){
 				//is still true
 			}
 
-			if(isLoggedIn == aNumber){
+			if(aBoolean == aNumber){
 				//is true again
 			}
 			//Notice the === instead of == 
 
-			if(isLoggedIn === aNumber){
+			if(aBoolean === aNumber){
 				//is **false** !!
 			}
 			````
+			### Variable Operators
+			
+			#### Arithmetic Operators
+			| Operator	| Example	| Description		| 
+			| :------:	| :-----:	| :---------		| 
+			| +			| x=x+3		| Addition			| 
+			| -			| x=y-3		| Subtraction		| 
+			| *			| x=y*3		| Multiplication	| 
+			| /		 	| x=r/e		| Division			| 
+			| %		 	| x=5%2		| Remainder			|
+			| ++	 	| x++		| Increment			|
+			| --		| x--		| Decrement 		|
+			
+			#### Assignment Operators
+			| Operator		| Example	| Equates to	| 
+			| :------:		| :-----:	| :--------:	| 
+			| =				| x=y		| x=y			| 
+			| +=			| x+=y		| x=x+y			| 
+			| -=			| x-=y		| x=x-y			| 
+			| *=		 	| x*=y		| x=x*y			| 
+			| /=		 	| x/=y		| x=x/y			|
+			| %=		 	| x%=y		| x=x%y			|
+
+
 			### Scope
 			When JavaScript encounter a variable for the first time it attempts to determin it's scope by searching the local scope,
 			then going up the scope until global scope is reached.  If it still has not found the variable it will declare a new 
@@ -159,6 +168,3 @@ block content
 			of object. In Class Based languages objects (classes) are "type" of varriable. This is why in JavaScript we can do things
 			like `someVar.length();` on all variables.  In a class based language such as PHP the same thing is done by calling a 
 			separate function `sizeof($someVar);`. 
-			
-			
-			
