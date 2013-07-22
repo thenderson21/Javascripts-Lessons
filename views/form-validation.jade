@@ -1,0 +1,148 @@
+extend layout
+
+block pageHeading
+	| Form Validation
+
+block pageTitle
+	title #{title} :: 
+		block pageHeading
+
+block navigation
+	| &#58;&#58; 
+	#{pageTitle}
+	block pageHeading
+	a(href='index') Home
+
+block headerScripts
+	script(type='text/javascript')
+		hljs.tabReplace = '    ';
+		hljs.initHighlightingOnLoad();
+		
+		$(function() {
+			var $tabs = $("#tabs");
+			$tabs.tabs();
+			
+			$('#unhide').on('click', function(evt){
+				$tabs.toggleClass('hidden');
+				$this = $(this).toggleClass('active');
+				if($this.hasClass('active')){
+					$this.text('Hide Solution');
+				}else{
+					$this.text('Show Solution');
+				}
+			});
+		});	
+
+block content
+	.page_header
+		h2 Exercise 2: 
+			block pageHeading
+	p
+		h4 Assigmnent:
+		| Create a html form with two fields First Nam: and Last Name.  Now write a JavaScript program that check that 
+		| the two form fields are not empty when the submit button is clicked and displays the results on screen.
+	
+	p
+		h4 Background:
+		| We are really programming now.  Form validation is one of the most fundimental and common types of code we 
+		| develop.
+	
+	p
+		h4 
+			a(href="#")#unhide Show Solution
+	
+	.hidden#tabs
+		ul
+			li
+				a(href="#tabs-1")	Vanilla JS
+			li
+				a(href="#tabs-2")	jQuery
+				
+		div#tabs-1
+			pre
+				code.javascripp
+					| var jsResults = document.getElementById('js'),
+					| 	jsForm = document.forms["jsForm"];
+					| 
+					| jsForm.onsubmit = function(){
+					| 	if(jsForm.firstName.value.length && jsForm.lastName.value.length){
+					| 		jsResults.innerText = "Fields Validated!"; 
+					| 	}else{
+					| 		jsResults.innerText = "Must supply both values";
+					| 	}		
+					| 	return false;
+					| }
+					
+			form(name="jsForm")
+				| First Name: 
+				input(type="text", name="firstName")
+				| Last Name: 
+				input(type="text", name="lastName")
+				input(type="submit")
+			
+			h4 Results:
+			.results#js
+				| Enter Values
+			script
+				var jsResults = document.getElementById('js'),
+					jsForm = document.forms["jsForm"];
+
+				jsForm.onsubmit = function(){
+					if(jsForm.firstName.value.length && jsForm.lastName.value.length){
+						jsResults.innerText = 'Fields Validated!'; 
+					}else{
+						jsResults.innerText = 'You Must supply both values.';
+					}		
+					return false;
+				} 
+		
+		div#tabs-2
+			pre
+				code.javascript			
+					| var $jqueryForm = $('#jQueryForm'),
+					| 	$results = $('.results#jquery');
+					| 
+					| $jqueryForm.on('submit', function(evt){
+					| 	var firstName = $(this).find('input[name="firstName"]').val(),
+					| 		lastName = $(this).find('input[name="lastName"]').val();
+					| 	
+					| 	if (firstName.length && lastName.length){
+					| 		$results.text('Fields Validated!');
+					| 	}else{
+					| 		$results.text('You Must supply both values.');
+					| 	}
+					| 	return false;					
+					| });
+			form#jQu| eryForm
+				| First Name: 
+				input(type="text", name="firstName")
+				| Lase Name: 
+				input(type="text", name="lastName")
+				input(type="submit")		
+			h4 Results:
+			.results#jquery
+				| Enter Values
+			script
+				var $jqueryForm = $('#jQueryForm'),
+					$results = $('.results#jquery');
+				
+				$jqueryForm.on('submit', function(evt){
+					var firstName = $(this).find('input[name="firstName"]').val(),
+						lastName = $(this).find('input[name="lastName"]').val();
+					
+					if (firstName.length && lastName.length){
+						$results.text('Fields Validated!');
+					}else{
+						$results.text('You Must supply both values.');
+					}
+					return false;					
+				});
+
+		div
+			h4 Note:
+			:markdown
+				Multiple variables can be declared with one `var` statement by chaining them togeather with commas. 
+				Some people prefer this way of declaring varriables as it saves charicters and can be used as a logical
+				devision of like varriables. 
+
+
