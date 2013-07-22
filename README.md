@@ -10,7 +10,7 @@ and
 
 or
 
-Copy and past the following into your commandline
+Open a command line (terminal on OS X).
 ````bash
 git clone https://github.com/thenderson21/Javascripts-Lessons.git
 cd Javascripts-Lessons

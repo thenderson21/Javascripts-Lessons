@@ -40,3 +40,6 @@ Thumbs.db
 #Node JS stuff
 node_modules
 npm-debug.log
+
+#Generated stylesheets
+*.css
