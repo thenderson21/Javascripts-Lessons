@@ -14,7 +14,7 @@ block navigation
 	a(href='index') Home
 
 block headerScripts
-	script(type='text/javascript')
+	script.
 		hljs.tabReplace = '    ';
 		hljs.initHighlightingOnLoad();
 		
@@ -78,7 +78,7 @@ block content
 			h4 Results:
 			.results#js
 				| Hello {Name}!
-			script
+			script.
 				var jsDiv = document.getElementById('js');
 				document.forms["jsForm"].onsubmit = function(){
 					jsDiv.innerText = 'Hello '+ document.forms["jsForm"].name.value +'!'; 
@@ -104,7 +104,7 @@ block content
 			h4 Results:
 			.results#jquery
 				| Hello {Name}!
-			script
+			script.
 				var $jqueryForm = $('#jQueryForm');
 				var $jqueryDiv = $('#jquery');
 				$jqueryForm.on('submit', function(evt){

@@ -14,7 +14,7 @@ block navigation
 	a(href='index') Home
 
 block headerScripts
-	script(type='text/javascript')
+	script.
 		hljs.tabReplace = '    ';
 		hljs.initHighlightingOnLoad();
 		
@@ -74,7 +74,7 @@ block content
 					
 			h4 Results:
 			.results#js
-			script
+			script.
 				var jsDiv = document.getElementById('js');
 				jsDiv.innerText = 'Hello World!'; 
 
@@ -122,7 +122,7 @@ block content
 					| $jqueryDiv.text('Hello World!'); 
 			h4 Results:
 			.results#jquery
-			script
+			script.
 				var $jqueryDiv = $('#jquery');
 				$jqueryDiv.text('Hello World!'); 
 

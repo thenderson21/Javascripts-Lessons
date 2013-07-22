@@ -14,7 +14,7 @@ block navigation
 	a(href='index') Home
 
 block headerScripts
-	script(type='text/javascript')
+	script.
 		hljs.tabReplace = '    ';
 		hljs.initHighlightingOnLoad();
 		
@@ -83,7 +83,7 @@ block content
 			h4 Results:
 			.results#js
 				| Enter Values
-			script
+			script.
 				var jsResults = document.getElementById('js'),
 					jsForm = document.forms["jsForm"];
 
@@ -122,7 +122,7 @@ block content
 			h4 Results:
 			.results#jquery
 				| Enter Values
-			script
+			script.
 				var $jqueryForm = $('#jQueryForm'),
 					$results = $('.results#jquery');
 				
