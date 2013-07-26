@@ -26,36 +26,138 @@ block content
 			block pageHeading
 		:markdown
 			Conditionals or conditional statements are the core of programing.  The conditionals guide the flow of
-			our programs.  They allow us to add desision making ability to the code.
+			our programs.  They allow us to add desision making ability to the code.  
 			
 			### Comparisons 
+			Comparisons in programming generally resolve to one of two options `TRUE` or `FALSE`.  The basic comparison 
+			operators relate directly to processor commands are extreamily fast.  
 
 			#### Comparison Operators				 
 
-			| Operator		| Universal Symbols	| Javascript	| Description													|
-			| :------:		| :---------------:	| :--------:	| :----------													|
-			| equal			| ==				| ==			| Both condition evaluate to the same. 							|
-			| exactly equal | ===				| ===			| Both condition evaluate to same value and type. 				|
-			| not equal		| !=				| !=			| The oposite that the condition evaluates to. 					|
-			| exlusive or 	| XOR				| --none--		| One condition or the other evaluates to true but not both. 	|
+			| Operator					| Javascript	| Description													|
+			| :------:					| :--------:	| :----------													|
+			| equal						| ==			| Both condition evaluate to the same. 							|
+			| exactly equal 			| ===			| Both condition evaluate to same value and type. 				|
+			| not equal					| !=			| The values do not evaluate to the same.	 					|
+			| not equal type or value 	| !==			| Either the value or the type is not the same.				 	|
+			| greater than				| >				| The larger value is on the left.								|
+			| less than					| <				| The larger value is on the right.								|
+			| greater than or equal		| <=			| The larger value is on the left or they are the same value.	|
+			| less than or equal		| >=			| The larger value is on the right or they are the same value.	|
 
 
 			#### Logical Operators	 		  
 
-			| Operator		| Universal Symbols	| Javascript	| Description													|
-			| :------:		| :---------------:	| :--------:	| :----------													|
-			| and			| & && AND			| &&			| Both conditions must evaluate to true. 						|
-			| or			| |	|| OR			| ||			| Either condition evaluates to true. 							|
-			| not			| ! NOT				| !				| The oposite that the condition evaluates to. 					|
-			| exlusive or 	| XOR				| 				| One condition or the other evaluates to true but not both. 	|
+			| Operator		| Universal Symbols			| Javascript	| Description													|
+			| :------:		| :---------------:			| :--------:	| :----------													|
+			| and			| & && AND					| &&			| Both conditions must evaluate to true. 						|
+			| or			| &#124; &#124;&#124; OR	| &#124;&#124;	| Either condition evaluates to true. 							|
+			| not			| ! NOT						| !				| The oposite that the condition evaluates to. 					|
+			| exlusive or 	| XOR						| 				| One condition or the other evaluates to true but not both. 	|
 
 			### If()
-
 			To become a master developer you must learn the ways of the `if`.  The if statement takes everything inside of the
-			parentheses and evaluates them to either `TRUE` or `FALSE`.  If only understand those two options.   
+			parentheses and evaluates them to either `TRUE` or `FALSE`.  If the `if()` statement evaluates the expression
+			to `TRUE` then it runs the code containd in the curley braces {} or the next line.  
+
+			Example:
+			````
+			var ten = 10,
+				two = 2;
 			
-			### Else and Else if()
+			if (ten > two){
+				console.log(ten + ' is greater than ' + two '.');
+			}
 			
+			// Results:
+			// 10 is greater than 2.
+			````
+			### Else
+			The if by itself is powerful yet limited.  It is only able to run code on when a true is reached. The if statement 
+			doesn't prevent code after the statement.  To do that you eather need another if statement or and else statement.
+			Else allows us to create a two way selecter.  If something run this bit of code, or else run a different bit of code.
+
+			Example:
+			````
+			var ten = 10,
+				two = 2;
+			
+			if (ten < two){
+				console.log(two + ' is greater than ' + ten '.');
+			}else{
+				console.log(ten + ' is greater than ' + two '.');
+			}
+			
+			// Results:
+			// 10 is greater than 2.
+			````
+			### Else if()
+			But what if you have more than two option?  In comes the else if statement.  The if else statement allows us to 
+			chain as many contitional statements togeather as we need.  
+
+			Example:
+			````
+			var ten = 10,
+				two = 2;
+			
+			if (ten === two){
+				console.log(two + ' is equal to ' + ten '.');
+			}else if(ten < two){
+				console.log(two + ' is greater than ' + ten '.');
+			}else{
+				console.log(ten + ' is greater than ' + two '.');
+			}
+			
+			// Results:
+			// 10 is greater than 2.
+			````
 			### Switch
+			Early on programmer discovered that they were doing allot of if else statements that was checking to see if a variable 
+			had limited set of values eg. `var color` could only have one of the values `'red', 'orange', 'yello', 'green' //...`
+			An so come the `switch()` statement.  The switch mathes a variable's value to possible values and runs all of the code 
+			following that 	`case`.  
+			Example:
+			````
+			var name =  'Jill';
 			
+			if(name === 'Jack'){
+				console.log("Where's Jill?");
+			}else if(name === 'Jill'){
+				console.log("Went up the Hill.");
+			}else{
+				console.log("Your not part of this story!!");
+			}
+			```` 
+			Would be written as: 
+			````
+			var name =  'Jill';
+			
+			switch(name){
+				case 'Jack':
+					console.log("Where's Jill?");
+					break;
+				
+				case 'Jill':
+					console.log("Went up the Hill.");
+					break;
+				defaut
+					console.log("Your not part of this story!!");
+					break;
+			}
+						
+			````			
 			### Ternary Oporator
+			Another shorthand method of simple conditional statements are the Ternary Oporators.  Rather than using an if/else
+			statement one could use a ternary oporator. Ternary oporators follow the pattern 
+			`(/*comparison expression*/) ? /*if true do this */ : /*else do this*/;` 
+
+			Example: 
+			````
+			var ten = 10,
+							two = 2;
+
+			(ten < two) ? alert(two + ' is > ' + ten '.') : alert(ten + ' is greater than ' + two '.');
+			````
+			
+			### Conditional Shorthands
+			

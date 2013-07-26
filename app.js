@@ -25,8 +25,12 @@ app.use(stylus.middleware({
   	compile: compile
   })
 );
+
+//Set webroot.
 app.use(express.static(__dirname + '/public'));
 
+//Set The default location to the favicon.
+app.use(express.favicon(__dirname + '/public/favicon.ico'));
 
 // App url directives
 app.get('/', function (req, res) {
@@ -41,5 +45,6 @@ app.get('/:page', function (req, res){
 		title : 'Javascript Lessons'
 	});
 });
+
 
 app.listen(3000);
