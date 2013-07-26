@@ -4,7 +4,7 @@ block pageHeading
 	| Conditionals
 
 block pageTitle
-	title #{title} ::
+	title #{title} :: 
 		block pageHeading
 
 block navigation
@@ -15,10 +15,19 @@ block navigation
 
 
 block headerScripts
+	//script(src='https://gist.github.com/peteboere/1517285.js')
 	script.
 		hljs.tabReplace = '    ';
+		
+		/* var $langCode = $('code').find("*[class*='lang-']");
+		
+		$langCode.each(function(key){
+			var $this = $(this),
+				classes = $this.class();
+				$this.class(classes.replace('lang-'), '');
+		}); */
+		
 		hljs.initHighlightingOnLoad();
-	
 		
 block content
 	.page_header
@@ -117,7 +126,7 @@ block content
 			An so come the `switch()` statement.  The switch mathes a variable's value to possible values and runs all of the code 
 			following that 	`case`.  
 			Example:
-			````
+			````javascript
 			var name =  'Jill';
 			
 			if(name === 'Jack'){
@@ -129,7 +138,7 @@ block content
 			}
 			```` 
 			Would be written as: 
-			````
+			````javascript
 			var name =  'Jill';
 			
 			switch(name){
@@ -152,7 +161,7 @@ block content
 			`(/*comparison expression*/) ? /*if true do this */ : /*else do this*/;` 
 
 			Example: 
-			````
+			````javascript
 			var ten = 10,
 							two = 2;
 
