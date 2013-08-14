@@ -1,0 +1,221 @@
+extend layout
+
+block pageHeading
+	| Form Sanitization
+
+block pageTitle
+	title #{title} :: 
+		block pageHeading
+
+block navigation
+	| &#58;&#58; 
+	#{pageTitle}
+	block pageHeading
+	a(href='index') Home
+
+block headerScripts
+	script.
+		hljs.tabReplace = '    ';
+		hljs.initHighlightingOnLoad();
+		
+		$(function() {
+			var $tabs = $("#tabs");
+			$tabs.tabs();
+			
+			$('#unhide').on('click', function(evt){
+				$tabs.toggleClass('hidden');
+				$this = $(this).toggleClass('active');
+				if($this.hasClass('active')){
+					$this.text('Hide Solution');
+				}else{
+					$this.text('Show Solution');
+				}
+			});
+		});	
+
+block content
+	.page_header
+		h2 Exercise 4: 
+			block pageHeading
+	p
+		h4 Assigmnent:
+		| Use the form we created last exercise and further sanitize the inputs by writting a function that 
+		| checks that the imputs strings contain only alphabetical charicters(A-Za-z) and hyphens (-).
+	
+	p
+		h4 Background:
+		| Input sanitization/verifications is a huge part of developing robust useable applications. It's
+		| not fun nor glorious as developing bouncing animted boxes, but it is a fundimental skill that's
+		| a good quarter or so of development. 
+	
+	p
+		h4 
+			a(href="#")#unhide Show Solution
+	
+	.hidden#tabs
+		ul
+			li
+				a(href="#tabs-1")	Vanilla JS
+			li
+				a(href="#tabs-2")	jQuery
+				
+		div#tabs-1
+			pre
+				code.javascript
+					| var jsResults = document.getElementById('js'),
+					| jsForm = document.forms["jsForm"];
+					| 
+					| jsForm.addEventListener('submit',function(evt){
+					| 	evt.preventDefault;
+					| 	if(jsForm.firstName.value.length && jsForm.lastName.value.length){
+					| 		if (validateName(jsForm.firstName.value) && validateName(jsForm.lastName.value)) {
+					| 			jsResults.innerText = 'Fields Validated and Sanitized!'; 
+					| 		} else {
+					|			jsResults.innerText = "";s
+					| 			if ( ! validateName(jsForm.firstName.value)) {
+					| 				jsResults.innerText = "First Name contains invalid charicters.\n";							
+					| 			}
+					| 			if ( ! validateName(jsForm.lastName.value)) {
+					| 				jsResults.innerText += "Last Name contains invalid charicters.";
+					| 			}
+					| 		}
+					| 	} else {
+					| 		jsResults.innerText = 'You Must supply both values.';
+					| 	}
+					| 	return false;	
+					| }, false); 
+					| 
+					| function validateName( name ){
+					| 	var illegalChars = /\W|[\d]/g;
+					| 	if (illegalChars.test(name)) {
+					| 		return false;
+					| 	} 
+					| 	return true;
+					| }
+					
+			form(name="jsForm")
+				| First Name: 
+				input(type="text", name="firstName")
+				| Last Name: 
+				input(type="text", name="lastName")
+				input(type="submit")
+			
+			h4 Results:
+			.results#js
+				| Enter Values
+			script.
+				var jsResults = document.getElementById('js'),
+					jsForm = document.forms["jsForm"];
+
+				jsForm.onsubmit = function(evt){
+					evt.preventDefault;
+					if(jsForm.firstName.value.length && jsForm.lastName.value.length){
+						if (validateName(jsForm.firstName.value) && validateName(jsForm.lastName.value)) {
+							jsResults.innerText = 'Fields Validated and Sanitized!'; 
+						} else {
+							jsResults.innerText = "";
+							if ( ! validateName(jsForm.firstName.value)) {
+								jsResults.innerText = "First Name contains invalid charicters.\n";
+							}
+							if ( ! validateName(jsForm.lastName.value)) {
+								jsResults.innerText += "Last Name contains invalid charicters.";
+							}
+						}
+					} else {
+						jsResults.innerText = 'You Must supply both values.';
+					}
+					return false;	
+				} 
+				
+				function validateName( name ){
+					var illegalChars = /\W|[\d]/g;
+					if (illegalChars.test(name)) {
+						return false;
+					} 
+					return true;
+				} 
+		
+		div#tabs-2
+			pre
+				code.javascript			
+					| var $jqueryForm = $('#jQueryForm'),
+					|     $results = $('.results#jquery');
+					| 
+					| $jqueryForm.on('submit', function(evt){
+					|     var firstName = $(this).find('input[name="firstName"]').val(),
+					|     	lastName = $(this).find('input[name="lastName"]').val();
+					|     
+					|     if (firstName.length && lastName.length){
+					|     	if (validateNameJQ(firstName) && validateNameJQ(lastName)) {
+					|     		$results.text('Fields Validated and Sanitized!'); 
+					|     		
+					|     	} else {
+					|     		$results.html('');
+					|     		if ( ! validateNameJQ(firstName)) {
+					|     			$results.html("First Name contains invalid charicters.&lt;br&gt;");							
+					|     		}
+					|     		if ( ! validateNameJQ(lastName)) {
+					|     			$results.append("Last Name contains invalid charicters.");
+					|     		}
+					|     	}
+					|     }else{
+					|     	$results.text('You Must supply both values.');
+					|     }
+					|     return false;
+					| });
+					| 
+					| function validateNameJQ( name ){
+					|     var illegalChars = /\W|[\d]/g;
+					|     if (illegalChars.test(name)) {
+					|     	return false;
+					|     } 
+					|     return true;
+					| }
+
+			#jQueryForm
+				| First Name: 
+				input(type="text", name="firstName")
+				| Lase Name: 
+				input(type="text", name="lastName")
+				input(type="submit")		
+			h4 Results:
+			.results#jquery
+				| Enter Values
+			script.
+				var $jqueryForm = $('#jQueryForm'),
+					$results = $('.results#jquery');
+				
+				$jqueryForm.on('submit', function(evt){
+					var firstName = $(this).find('input[name="firstName"]').val(),
+						lastName = $(this).find('input[name="lastName"]').val();
+					
+					if (firstName.length && lastName.length){
+						if (validateNameJQ(firstName) && validateNameJQ(lastName)) {
+							$results.text('Fields Validated and Sanitized!'); 
+							
+						} else {
+							$results.html('');
+							if ( ! validateNameJQ(firstName)) {
+								$results.html("First Name contains invalid charicters.<br>");							
+							}
+							if ( ! validateNameJQ(lastName)) {
+								$results.append("Last Name contains invalid charicters.");
+							}
+						}
+					}else{
+						$results.text('You Must supply both values.');
+					}
+					return false;					
+				});
+				
+				function validateNameJQ( name ){
+					var illegalChars = /\W|[\d]/g;
+					if (illegalChars.test(name)) {
+						return false;
+					} 
+					return true;
+				}
+
+		div
+
+

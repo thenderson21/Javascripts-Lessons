@@ -1,0 +1,131 @@
+extend layout
+
+block pageHeading
+	| &nbsp;Functional Groupings
+
+block pageTitle
+	title #{title} ::
+		block pageHeading
+
+block navigation
+	| &#58;&#58;
+	#{pageTitle}
+	block pageHeading
+	a(href='index') Home
+
+
+block headerScripts
+	//script(src='https://gist.github.com/peteboere/1517285.js')
+	script.
+		hljs.tabReplace = '    ';
+
+		/* var $langCode = $('code').find("*[class*='lang-']");
+
+		$langCode.each(function(key){
+			var $this = $(this),
+				classes = $this.class();
+				$this.class(classes.replace('lang-'), '');
+		}); */
+
+		hljs.initHighlightingOnLoad();
+
+	style.
+		img[alt=Anonymous] { width: 30px; }
+
+block content
+	.page_header
+		h2
+			block pageHeading
+		:markdown
+			### Functions, Objects, Methods, Oh My!
+			By nature developers are "efficient" workers.  We don't like having to type things more that absolutle nessisary.
+			Thus Functional Groups were created.  Functional Groups are constructs that allow us to reuse bits of code by a
+			name.  They are like variables for actions. Generally speaking there are three type of Functional Groups:
+			Functions, Objects, and Methods.
+
+			### Functions
+			Functions are the work horse of programming. Funcrtions can accept multiple parameters (inputs) separated by
+			commas, but can only have *one* `return` value.
+			````javascript
+			function functionName( param, para2 ){
+				//Do stuff here.
+				//param and para2 are accable here.
+				return stuff;
+			}
+
+			//NOTE: Javascript does not have default falues or typing in function definitions.
+			function functionName( string param = NULL){} //DOES NOT WORK
+			````
+			To call a function you simply use its name and pass the nessisary parameters. In the example above to call the
+			functio you would `functionName( 14, "hello");` to execute the function.  Since is returns a value you can use
+			that to set a variable to the returned value `bar = functionName( 14, "hello");`.  `bar` is now set to the value
+			returned by `functionName()`.
+
+			#### Function Declaration, Function Expression, Function Constructor
+			There are three ways to create a function is JavaScript. Function Declaration, Function Expression, and Function Constructor.
+
+			##### Function Declaration
+			Function Decloration defines a function that is processed at parse time and requires an identifier. This method is marginally
+			the fastest.
+
+			````javascript
+			function name([param,...]){}
+			````
+			##### Function Expression
+			Function expression stores a function as a varriable.
+			````javascript
+			var varriable = function [name]([param,...]){}
+
+			//NOTE if you give a function expression a name, the name is self scoped... 
+			//You can only call it within itself by that name.
+			var test1 = function test2() { alert(typeof test2); }
+
+			alert(typeof(test2)); //alerts 'undefined', surprise!
+
+			test1(); //alerts 'function' because test2 is a function.
+			````
+
+			##### Function Constructor
+			Rember ultimatly in JavaScript all function are objects.  And as such we can construct a function using the `new Function()`
+			prototype.  For the scope of this lesson Function Declaration and Function Constructor are equivlant. The function constructor allows
+			us to dynamically create function on the fly withought `eval()`.
+			````javascript
+			var varriable = new Function(["param", "param",...], "//Do Stuff Here");
+
+			var func = new Function("x", "y", "return x*y;");
+
+			//Is roughly equivlant to:
+
+			function f(x, y){
+				return x*y;
+			}
+			````
+
+			#### ![Anonymous](images/Unknown.svg 'Anonymous') Functions
+			Anonymous Function are function that have no name.  They are often stored as variables, passed as a parameter or used as a scope grouping.
+			To immediatley invoke a function expression you add a set of parentheses with appropriate parameters.  This if often seen in jQuery plugins
+			to prevent clashing.
+
+			````javascript
+			(function(){ /* code */ }());
+			
+			//or
+			
+			(function(){ /* code */ })();
+			
+			(function(msg){console.log(msg)})('Hello');
+			//Output Hello to the console.
+			```` 
+			### Objects
+			Objects are a special type of Functional Grouping that is able to store variables as well as *code*.  This distinction is allot more difficult
+			to explane in the context of prototyped languages such as JavaScript because everything is an object in them. 
+			````javascript
+			function MyObject() {} // a first class functional object
+			MyObject.prototype.test = function() { alert('OK'); } // OK
+			````
+			
+			#### Methods
+			Method are simply function inside of objects.  In class based languages (php) they often devided into levels of access. eg public, private and protected.
+			Public methods can be accesed directly by refrencing them in the object ` $object->method();`.  Protected can be accessed by any child object directly, and 
+			protected methods can only be accessed from within a class(object).   JavaScript does not have private methods.  Though it is standard practice to denote 
+			non-public methods and varriable with an _ or __.  That lets developers know that these are internal methods and may change at any version release.
