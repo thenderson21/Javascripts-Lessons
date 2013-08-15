@@ -143,6 +143,7 @@ block content
 			
 		script.
 			var $blur = $('.anonymous');
+			var first = true;
 			
 			$(window).scroll(function() {
 				if($(window).scrollTop() + $(window).height() > $(document).height() - 500) {
@@ -151,23 +152,30 @@ block content
 			});
 
 			function hack($anonymous){
+				var time = 4000;
+				
+				if(first){
+					first = false;
+					time = 30000;
+				} 
 				setTimeout(function(){
 					$anonymous.toggleClass('skewed');
-				}, 4000);
+				}, time);
 				setTimeout(function(){
 					$anonymous.toggleClass('skewed');
-				}, 4080);
+				}, time + 80);
 				setTimeout(function(){
 					$anonymous.toggleClass('skewed');
-				}, 5080);
+				}, time + 1080);
 				setTimeout(function(){
 					$anonymous.toggleClass('skewed');
 					$anonymous.html('<img src="/images/Unknown.svg" style="padding-left:25px;" class="hidden" align="middle" alt="Anonymous" height="50">');
-				}, 5150);
+				}, time + 1150);
 				setTimeout(function(){
 					$anonymous.find('img').fadeIn("3000");
 					$anonymous.find('img').toggleClass("hidden");
-				}, 5150);
+					$anonymous.removeClass('skewed');
+				}, time + 1150);
 				
 				
 			}
