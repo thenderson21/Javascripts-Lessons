@@ -30,7 +30,18 @@ block headerScripts
 		hljs.initHighlightingOnLoad();
 
 	style.
-		img[alt=Anonymous] { width: 30px; }
+		.hidden{
+			display:none;
+		}
+		.anonymous{
+			display:inline-block;
+			width: 95px;
+			height: 50px; 
+			line-height:50px;
+			}
+		.skewed {
+			-webkit-transform:skew(50deg);
+		}
 
 block content
 	.page_header
@@ -44,7 +55,7 @@ block content
 			Functions, Objects, and Methods.
 
 			### Functions
-			Functions are the work horse of programming. Funcrtions can accept multiple parameters (inputs) separated by
+			Functions are the work horse of programming. They can accept multiple parameters (inputs) separated by
 			commas, but can only have *one* `return` value.
 			````javascript
 			function functionName( param, para2 ){
@@ -57,7 +68,7 @@ block content
 			function functionName( string param = NULL){} //DOES NOT WORK
 			````
 			To call a function you simply use its name and pass the nessisary parameters. In the example above to call the
-			functio you would `functionName( 14, "hello");` to execute the function.  Since is returns a value you can use
+			function you would `functionName( 14, "hello");` to execute the function.  Since function can `return` a value you can use
 			that to set a variable to the returned value `bar = functionName( 14, "hello");`.  `bar` is now set to the value
 			returned by `functionName()`.
 
@@ -88,7 +99,7 @@ block content
 			##### Function Constructor
 			Rember ultimatly in JavaScript all function are objects.  And as such we can construct a function using the `new Function()`
 			prototype.  For the scope of this lesson Function Declaration and Function Constructor are equivlant. The function constructor allows
-			us to dynamically create function on the fly withought `eval()`.
+			us to dynamically create function on the fly without `eval()`.
 			````javascript
 			var varriable = new Function(["param", "param",...], "//Do Stuff Here");
 
@@ -101,7 +112,7 @@ block content
 			}
 			````
 
-			#### ![Anonymous](images/Unknown.svg 'Anonymous') Functions
+			#### <section class="anonymous">Anonymous</section> Functions
 			Anonymous Function are function that have no name.  They are often stored as variables, passed as a parameter or used as a scope grouping.
 			To immediatley invoke a function expression you add a set of parentheses with appropriate parameters.  This if often seen in jQuery plugins
 			to prevent clashing.
@@ -129,3 +140,34 @@ block content
 			Public methods can be accesed directly by refrencing them in the object ` $object->method();`.  Protected can be accessed by any child object directly, and 
 			protected methods can only be accessed from within a class(object).   JavaScript does not have private methods.  Though it is standard practice to denote 
 			non-public methods and varriable with an _ or __.  That lets developers know that these are internal methods and may change at any version release.
+			
+		script.
+			var $blur = $('.anonymous');
+			
+			$(window).scroll(function() {
+				if($(window).scrollTop() + $(window).height() > $(document).height() - 500) {
+					hack($blur);
+				}
+			});
+
+			function hack($anonymous){
+				setTimeout(function(){
+					$anonymous.toggleClass('skewed');
+				}, 4000);
+				setTimeout(function(){
+					$anonymous.toggleClass('skewed');
+				}, 4080);
+				setTimeout(function(){
+					$anonymous.toggleClass('skewed');
+				}, 5080);
+				setTimeout(function(){
+					$anonymous.toggleClass('skewed');
+					$anonymous.html('<img src="/images/Unknown.svg" style="padding-left:25px;" class="hidden" align="middle" alt="Anonymous" height="50">');
+				}, 5150);
+				setTimeout(function(){
+					$anonymous.find('img').fadeIn("3000");
+					$anonymous.find('img').toggleClass("hidden");
+				}, 5150);
+				
+				
+			}
