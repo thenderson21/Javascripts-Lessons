@@ -63,36 +63,59 @@ block content
 			pre
 				code.javascript
 					| var jsResults = document.getElementById('js'),
-					| jsForm = document.forms["jsForm"];
+					| 	jsForm = document.forms["jsForm"];
 					| 
-					| jsForm.addEventListener('submit',function(evt){
+					| jsForm.onsubmit = function(evt){
 					| 	evt.preventDefault;
 					| 	if(jsForm.firstName.value.length && jsForm.lastName.value.length){
 					| 		if (validateName(jsForm.firstName.value) && validateName(jsForm.lastName.value)) {
-					| 			jsResults.innerText = 'Fields Validated and Sanitized!'; 
+					| 			setText(jsResults, 'Fields Validated and Sanitized!'); 
 					| 		} else {
-					|			jsResults.innerText = "";s
+					| 			var results = "";
 					| 			if ( ! validateName(jsForm.firstName.value)) {
-					| 				jsResults.innerText = "First Name contains invalid charicters.\n";							
+					| 				results = "First Name contains invalid charicters.\n";
 					| 			}
 					| 			if ( ! validateName(jsForm.lastName.value)) {
-					| 				jsResults.innerText += "Last Name contains invalid charicters.";
+					| 				results += "Last Name contains invalid charicters.";
 					| 			}
+					| 			setText(jsResults, results);
 					| 		}
 					| 	} else {
 					| 		jsResults.innerText = 'You Must supply both values.';
 					| 	}
 					| 	return false;	
-					| }, false); 
+					| } 
 					| 
+					| /**
+					|  * Simple string validation method that checks for non alphabetical and - charicters.
+					|  *
+					|  * @method validateName
+					|  * @param {string} name The name string to be validated.
+					|  * @returns {boolean} Returns `true` if string is validated or `false` if it fails.
+					|  */
 					| function validateName( name ){
 					| 	var illegalChars = /\W|[\d]/g;
 					| 	if (illegalChars.test(name)) {
 					| 		return false;
 					| 	} 
 					| 	return true;
+					| } 
+					| 
+					| /**
+					|  * A platform indipendant way to set text in an element.
+					|  *
+					|  * @method setText
+					|  * @param {string} Element The dom element to be inserted into.
+					|  * @param {string} The string to be inserted.
+					|  */ 
+					| function setText(Element, value){
+					| 	if ((Element.textContent) && (typeof (Element.textContent) != 'undefined')) {
+					| 		Element.textContent  = value;
+					| 	} else {
+					| 		Element.innerText = value;
+					| 	}
 					| }
-					
+
 			form(name="jsForm")
 				| First Name: 
 				input(type="text", name="firstName")
@@ -111,15 +134,16 @@ block content
 					evt.preventDefault;
 					if(jsForm.firstName.value.length && jsForm.lastName.value.length){
 						if (validateName(jsForm.firstName.value) && validateName(jsForm.lastName.value)) {
-							jsResults.innerText = 'Fields Validated and Sanitized!'; 
+							setText(jsResults, 'Fields Validated and Sanitized!'); 
 						} else {
-							jsResults.innerText = "";
+							var results = "";
 							if ( ! validateName(jsForm.firstName.value)) {
-								jsResults.innerText = "First Name contains invalid charicters.\n";
+								results = "First Name contains invalid charicters.\n";
 							}
 							if ( ! validateName(jsForm.lastName.value)) {
-								jsResults.innerText += "Last Name contains invalid charicters.";
+								results += "Last Name contains invalid charicters.";
 							}
+							setText(jsResults, results);
 						}
 					} else {
 						jsResults.innerText = 'You Must supply both values.';
@@ -134,6 +158,14 @@ block content
 					} 
 					return true;
 				} 
+				
+				function setText(Element, value){
+					if ((Element.textContent) && (typeof (Element.textContent) != 'undefined')) {
+						Element.textContent  = value;
+					} else {
+						Element.innerText = value;
+					}
+				}
 		
 		div#tabs-2
 			pre
@@ -164,6 +196,13 @@ block content
 					|     return false;
 					| });
 					| 
+					| /**
+					|  * Simple string validation method that checks for non alphabetical and - charicters.
+					|  *
+					|  * @method validateNameJQ
+					|  * @param {string} name The name string to be validated.
+					|  * @returns {boolean} Returns `true` if string is validated or `false` if it fails.
+					|  */ 
 					| function validateNameJQ( name ){
 					|     var illegalChars = /\W|[\d]/g;
 					|     if (illegalChars.test(name)) {
@@ -215,7 +254,17 @@ block content
 					} 
 					return true;
 				}
+				
 
 		div
-
+			h4 Note:
+			:markdown
+				You might have noticed the comment block befor the functions.  Those are special
+				comment blocks called docblocks(docbloc), they are a standardised way to document source-code
+				that is human readable and can be parsed by documentation programs like [yuiDoc](http://yui.github.io/yuidoc/).
+			pre
+				code.javascript
+					| /**
+					|  * DocBloc
+					|  */
 
