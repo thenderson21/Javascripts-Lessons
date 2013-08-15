@@ -62,16 +62,24 @@ block content
 			pre
 				code.javascripp
 					| var jsResults = document.getElementById('js'),
-					| 	jsForm = document.forms["jsForm"];
+					| 	jsForm = document.forms['jsForm'];
 					| 
 					| jsForm.onsubmit = function(){
-					| 	if(jsForm.firstName.value.length && jsForm.lastName.value.length){
-					| 		jsResults.innerText = "Fields Validated!"; 
-					| 	}else{
-					| 		jsResults.innerText = "Must supply both values";
-					| 	}		
-					| 	return false;
-					| }
+					| 	if(jsForm.firstName.value.length && jsForm.lastName.value.length){	
+					|     	if ((jsResults.textContent) && (typeof (jsResults.textContent) != 'undefined')) {
+					|             jsResults.textContent  = 'Fields Validated!';
+					|         } else {
+					|             jsResults.innerText = 'Fields Validated!';
+					|         }
+					|     }else{
+					|     	if ((jsResults.textContent) && (typeof (jsResults.textContent) != 'undefined')) {
+					|             jsResults.textContent = 'You Must supply both values.';
+					|         } else {
+					|             jsResults.innerText = 'You Must supply both values.';
+					|         }
+					|     }		
+					|     return false;
+					| } 
 					
 			form(name="jsForm")
 				| First Name: 
@@ -85,13 +93,21 @@ block content
 				| Enter Values
 			script.
 				var jsResults = document.getElementById('js'),
-					jsForm = document.forms["jsForm"];
+					jsForm = document.forms['jsForm'];
 
 				jsForm.onsubmit = function(){
-					if(jsForm.firstName.value.length && jsForm.lastName.value.length){
-						jsResults.innerText = 'Fields Validated!'; 
+					if(jsForm.firstName.value.length && jsForm.lastName.value.length){	
+						if ((jsResults.textContent) && (typeof (jsResults.textContent) != 'undefined')) {
+							jsResults.textContent  = 'Fields Validated!';
+						} else {
+							jsResults.innerText = 'Fields Validated!';
+						}
 					}else{
-						jsResults.innerText = 'You Must supply both values.';
+						if ((jsResults.textContent) && (typeof (jsResults.textContent) != 'undefined')) {
+							jsResults.textContent = 'You Must supply both values.';
+						} else {
+							jsResults.innerText = 'You Must supply both values.';
+						}
 					}		
 					return false;
 				} 
