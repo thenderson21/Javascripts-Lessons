@@ -272,28 +272,86 @@ block content
 			````javascript
 			var i = 0;
 
-			while (foo <= 16) {  	//Is the value of foo greater than or equal to 16;
+			while (i <= 16) {  	//Is the value of i greater than or equal to 16;
 				console.log(i);		
 				i++;				// Add one to i;
 			}
-				````
+			````
 		
 		h4 For()
+		:markdown
+			The for() loop is a specalised entry loop used when you know how many times you want to loop throught it.
+			It includes a build in loop counter and var incrementation. The formula is for ( counter varriable ; Conditon to evaluate ; do math to counter){}
+		
+			**Example:**
+			````javascript
+			for (i; i <= 16; i++ ) { 
+				console.log(i);		
+			}
+			````
 		
 		h3 Exit Loops
-		
+		:markdown
+			Exit loop check the conditional statement after it runcs the code.  This means tha exit loops are always run at least once.
+
 		h4 do{ ... } while()
+		:markdown
+			The do..while() loop 
 		
+			**Example:**
+			````javascript
+			var i = 0;
+
+			do { 
+				console.log(i);	
+				i++;				// Add one to i;	
+			} while (i <= 16)
+			````
+			
 		h3 Special Loops
-		
-		h4 forEach()
+		:markdown
+			There are some special purpose loops that are available to handle common or special cases.
 		
 		h4 for(in)
-		
+		:markdown
+			**Example:**
+			````javascript
+			var obj = {key1:1, key2:"two"};
+
+			for (var key in obj) {
+				console.log(key, obj[key]);
+			}
+			````
+
 		h3 Bailing out of a Loop.
-		
+		:markdown
+			Sometimes you need to exit a loop befor it is during execution.  There are a several of ways to do that.
+
 		h4 Break
-		
+		:markdown
+			We were introduced to the break statement with the switch.   Break stops anything after the statement in the curent scope {} and 
+			jumps up one level of scope.
+			````
+			for (i=0;i<10;i++)	{
+				if (i==3) break;
+				x=x + "The number is " + i + "<br>";
+			}
+			````
+		h4 Return	
+		:markdown
+			Returns does basically the same thing as break bur also can return a specified variable.
+			````
+			for (i=0;i<10;i++) {
+				if (i==3) return;
+				x=x + "The number is " + i + "<br>";
+			}
+			````
 		h4 Continue
-		
-		h4 Return
+		:markdown
+			Continue overides the one iteration of a loop. 
+			````
+			for (i=0;i<=10;i++) {
+				if (i==3) continue;
+				x=x + "The number is " + i + "<br>";
+			}
+			````
