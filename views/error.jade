@@ -1,15 +1,13 @@
 extend layout
 
 block pageTitle
-	title #{title} :: intro
-
+	title #{title} :: #{error}
 block navigation
-	&#58;&#58; intro 
+	&#58;&#58; Error 
 	a(href='index') Home
 
 block content
 	.page_header
-		h2 Error
+		h2 #{error}
 		p.
-			    
-	 
+		Ooooh You done broke simethings! I am telling Admin.

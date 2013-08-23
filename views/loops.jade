@@ -1,0 +1,299 @@
+extend layout
+
+block pageHeading
+	| &nbsp;Loops
+
+block pageTitle
+	title #{title} ::
+		block pageHeading
+
+block navigation
+	| &#58;&#58;
+	#{pageTitle}
+	block pageHeading
+	a(href='index') Home
+
+
+block headerScripts
+	//script(src='https://gist.github.com/peteboere/1517285.js')
+	script.
+		hljs.tabReplace = '    ';
+
+		/* var $langCode = $('code').find("*[class*='lang-']");
+
+		$langCode.each(function(key){
+			var $this = $(this),
+				classes = $this.class();
+				$this.class(classes.replace('lang-'), '');
+		}); */
+
+		hljs.initHighlightingOnLoad();
+
+	style.
+		.hidden{
+			display:none;
+		}
+
+		.entryLoop {
+			width: 100%;
+			height: 300px;
+		}
+		
+		.js {
+			width: 49%;
+			float: left;
+			position: relative;
+			background-color: ghostwhite;
+			padding: 10px;
+		}
+		
+		.run {
+			cursor:pointer;
+			-moz-box-shadow:inset 0px 1px 0px 0px #dcecfb;
+			-webkit-box-shadow:inset 0px 1px 0px 0px #dcecfb;
+			box-shadow:inset 0px 1px 0px 0px #dcecfb;
+			background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #bddbfa), color-stop(1, #80b5ea) );
+			background:-moz-linear-gradient( center top, #bddbfa 5%, #80b5ea 100% );
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddbfa', endColorstr='#80b5ea');
+			background-color:#bddbfa;
+			-webkit-border-top-left-radius:0px;
+			-moz-border-radius-topleft:0px;
+			border-top-left-radius:0px;
+			-webkit-border-top-right-radius:0px;
+			-moz-border-radius-topright:0px;
+			border-top-right-radius:0px;
+			-webkit-border-bottom-right-radius:0px;
+			-moz-border-radius-bottomright:0px;
+			border-bottom-right-radius:0px;
+			-webkit-border-bottom-left-radius:0px;
+			-moz-border-radius-bottomleft:0px;
+			border-bottom-left-radius:0px;
+			text-indent:0;
+			border:1px solid #84bbf3;
+			display:inline-block;
+			color:#ffffff;
+			font-family:Arial;
+			font-size:15px;
+			font-weight:bold;
+			font-style:normal;
+			height:40px;
+			line-height:40px;
+			width:100px;
+			text-decoration:none;
+			text-align:center;
+			text-shadow:1px 1px 0px #528ecc;
+		}
+		
+		.run:hover {
+			background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #80b5ea), color-stop(1, #bddbfa) );
+			background:-moz-linear-gradient( center top, #80b5ea 5%, #bddbfa 100% );
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#80b5ea', endColorstr='#bddbfa');
+			background-color:#80b5ea;
+		}
+		
+		.run:active {
+			position:relative;
+			top:1px;
+		}
+		
+		.reset {
+			cursor:pointer;
+			-moz-box-shadow:inset 0px 1px 0px 0px #dcecfb;
+			-webkit-box-shadow:inset 0px 1px 0px 0px #dcecfb;
+			box-shadow:inset 0px 1px 0px 0px #dcecfb;
+			background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #bddbfa), color-stop(1, #80b5ea) );
+			background:-moz-linear-gradient( center top, #bddbfa 5%, #80b5ea 100% );
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddbfa', endColorstr='#80b5ea');
+			background-color:#bddbfa;
+			-webkit-border-top-left-radius:0px;
+			-moz-border-radius-topleft:0px;
+			border-top-left-radius:0px;
+			-webkit-border-top-right-radius:0px;
+			-moz-border-radius-topright:0px;
+			border-top-right-radius:0px;
+			-webkit-border-bottom-right-radius:0px;
+			-moz-border-radius-bottomright:0px;
+			border-bottom-right-radius:0px;
+			-webkit-border-bottom-left-radius:0px;
+			-moz-border-radius-bottomleft:0px;
+			border-bottom-left-radius:0px;
+			text-indent:0;
+			border:1px solid #84bbf3;
+			display:inline-block;
+			color:#ffffff;
+			font-family:Arial;
+			font-size:15px;
+			font-weight:bold;
+			font-style:normal;
+			height:40px;
+			line-height:40px;
+			width:100px;
+			text-decoration:none;
+			text-align:center;
+			text-shadow:1px 1px 0px #528ecc;
+		}
+		
+		.reset:hover {
+			background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #80b5ea), color-stop(1, #bddbfa) );
+			background:-moz-linear-gradient( center top, #80b5ea 5%, #bddbfa 100% );
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#80b5ea', endColorstr='#bddbfa');
+			background-color:#80b5ea;
+		}
+		
+		.reset:active {
+			position:relative;
+			top:1px;
+		}
+		.html {
+			width: 30%;
+			float: right;
+			position: relative;
+		}
+		li.loopTarget{
+			margin-bottom: 5px;
+			list-style:none;
+			height: 50px;
+			width: 50px;
+			border-style:solid;
+			border-width:1px;
+			border-color: black;
+			background-color: red;
+		}
+		
+		.rotate{
+			-webkit-transform:rotate(50deg);
+		}
+
+block content
+	.page_header
+		h2
+			block pageHeading
+		p.	
+			Repetative tasks suck! Loops help us automate repetative tasks by performing some specified
+			action until an exit contition is met.  Loops come in two different flavors, entry loops and 
+			exit loops.  
+		
+		h3 Entry Loops
+			
+		p.
+			Entry loops check for the exit condition before is does the action. 
+			
+		.entryLoop
+			.js
+				strong JavaScript:
+				code.javascript
+					.while					
+						| <br> var i = 0; <br>
+						| var elementList = document.querySelectorAll('.loopResults li');<br><br>
+						span#while while( <span class="i">i</span> &lt;= 3 ) { <br><br>
+						span#doStuff elementList[<span class="i">i</span>].style.backgroundColor = "green"; <br>		 
+						| <br>	
+						span#ipp i++;<br>		 
+						| <br>}	<br><br><br>	 
+				
+				.run Run
+				&nbsp;
+				.reset Reset
+			.html
+				strong Results:
+				.loopResult
+					ul
+						li.loopTarget 
+						li.loopTarget
+						li.loopTarget
+						li.loopTarget
+			
+		script.
+			//$('.js code').each(function(i, e) {hljs.highlightBlock(e, null, true)});
+			
+			$loopTarget = $("li.loopTarget");
+			$i = $("span.i ");
+			$ipp = $("span#ipp");			
+			$while = $("span#while");
+			$doStuff = $("span#doStuff");
+			
+			$(".js .reset").on("click", function(){
+				$i.text('i');
+				$loopTarget.css({"background-color": "red"});
+				$while.css({"background-color": ""});
+			});
+			
+			$(".js .run").on("click", function(){
+				var timeout = 1200;
+				var totalTime;
+				$loopTarget.each(function(i, $this) {
+					setTimeout(function(){
+						$while.css({"background-color": "yellow"});
+						
+						setTimeout(function(){
+							$while.css({"background-color": 'green'});
+						}, timeout * i + 200);
+						
+						setTimeout(function(){
+							$($this).css({"background-color": "green"});
+							$doStuff.css({"background-color": "yellow"});
+						}, timeout * i + 400);
+						
+						setTimeout(function(){
+							$doStuff.css({"background-color": ""});
+						}, timeout * i + 600);
+						
+						setTimeout(function(){
+							$i.text('i (' + (i + 1 ) + ')');
+							$ipp.css({"background-color": "yellow"});
+						}, timeout * i + 800);
+						
+						setTimeout(function(){
+							$ipp.css({"background-color": ""});
+						}, timeout * i + 1000);
+						
+						if( i+1 >= 4) {
+							totalTime = timeout * i + 1000;
+							console.log(totalTime);
+							setTimeout(function(){
+								$while.css({"background-color": 'yellow'});
+							}, totalTime + 200);
+							
+							setTimeout(function(){
+								$while.css({"background-color": 'red'});
+							}, totalTime + 400);
+						}	
+					}, timeout * i);			
+				});
+				
+			});
+			
+		h4 While()
+		:markdown
+			The while() loop is the basic entry loop.  In the most simple terms it means: While what's in here ()
+			evluates to `true` do whatever is in these {}.
+
+			**Example:**
+			````javascript
+			var i = 0;
+
+			while (foo <= 16) {  	//Is the value of foo greater than or equal to 16;
+				console.log(i);		
+				i++;				// Add one to i;
+			}
+				````
+		
+		h4 For()
+		
+		h3 Exit Loops
+		
+		h4 do{ ... } while()
+		
+		h3 Special Loops
+		
+		h4 forEach()
+		
+		h4 for(in)
+		
+		h3 Bailing out of a Loop.
+		
+		h4 Break
+		
+		h4 Continue
+		
+		h4 Return

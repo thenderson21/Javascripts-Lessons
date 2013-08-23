@@ -224,9 +224,12 @@ block content
 				var $jqueryForm = $('#jQueryForm'),
 					$results = $('.results#jquery');
 				
-				$jqueryForm.on('submit', function(evt){
-					var firstName = $(this).find('input[name="firstName"]').val(),
-						lastName = $(this).find('input[name="lastName"]').val();
+				console.log($jqueryForm);
+				
+				$jqueryForm.find('input[type="submit"]').click(function(){
+					console.log("Submitted");
+					var firstName = $(this).parent().find('input[name="firstName"]').val(),
+						lastName = $(this).parent().find('input[name="lastName"]').val();
 					
 					if (firstName.length && lastName.length){
 						if (validateNameJQ(firstName) && validateNameJQ(lastName)) {
