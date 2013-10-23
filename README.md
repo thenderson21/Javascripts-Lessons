@@ -11,13 +11,13 @@ and
 or
 
 Open a command line (terminal on OS X).
-````bash
+
+```bash
 git clone https://github.com/thenderson21/Javascripts-Lessons.git
 cd Javascripts-Lessons
 npm install
 node app.js
-
-````
+```
 
 Now go to [http://localhost:3000/](http://localhost:3000/) in your browser.
 
