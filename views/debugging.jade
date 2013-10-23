@@ -1,0 +1,139 @@
+extend layout
+
+block pageHeading
+	| Debugging
+
+block pageTitle
+	title #{title} :: 
+		block pageHeading
+
+block navigation
+	| &#58;&#58; 
+	#{pageTitle}
+	block pageHeading
+	a(href='index') Home
+
+
+block headerScripts
+	//script(src='https://gist.github.com/peteboere/1517285.js')
+	script.
+		hljs.tabReplace = '    ';
+		
+		hljs.initHighlightingOnLoad();
+		
+block content
+	.page_header
+		h2 
+			block pageHeading
+		
+		p.
+			Codeing is easy, making it work is the hard part. As developers we spend most of our time fixing
+			the code we wrote.  There are a varity of tools available to help us debug, but ultimatly our
+			brains are the most important tool.  The most important part of debugging is having a good 
+			understanding of what the code is supposed to do, how it is doing it and what it is actually
+			doing.  
+			
+		
+		h3 Zen and art of debugging
+		
+		p. 
+			The first step in debugging is getting your mind right.  One of the most frustrating tasks is 
+			chasing down an illusive bug or hunting a shy gremlin.  Programming is raw unadulterated logic.
+			When you find yourself getting angry or frustrated at the computer, Stop walk away. A few minutes
+			away from the screen and things generally click.  
+				
+			
+		h4 What is it supposed to do?
+		
+		p.
+			Now go over the source code.  Make sure you understand what it is supposed to do.  Map it out in your
+			head, or diagram the flow.  Now is the time to do research if you don't understand how parts work. If 
+			there is a function you don't understand figure it out. If there are language constructs you are
+			not familiar with look in the manuals. (A good general one is the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">Mozilla JavaScript Refrence</a>. )
+			Remember all JavaScripts are NOT the same. 
+			
+		p.  
+			This same question must be asked for all frameworks (<strong>Including jQuery</strong>) and black boxes. 
+			A general rule of thumbs is if you don't know how it works don't use it.  Many framworks are wonderful tools
+			but if you don't understand at a rudimentary level how they work you will not be able to debug within them.
+
+		h4 What is it doing?
+		
+		p. 
+			Usually half of the battle is figuring out what it is actually doing. One of the hardest things 
+			to debug is a clitch that cannot be reproduced.  It is practically impossible to fix an error
+			that you cannot get to occur.  Generally speaking the best way to figure out what is going on
+			in the program is by following the variables.  This is where our debugging tools come into play.
+			They allow us to see what is going on under the hood, while our program is running.  
+		
+		h4 Figure out what it ain't
+			
+		h4 Common sources of bugs
+					
+		h5 Syntactical errors
+		
+		h6 Common Syntax Errors
+		
+		p.indented
+			:markdown
+				- Mismatched quotes ""|'',  braces {}, brackets [] or parentheses () -- if you open it, close it;
+				- Capitilization error -- JavaScript is case sensitive. 			
+				- Scopeing errors
+				- . instead of + or vice versa 
+		
+		h5 Logical errors
+		
+		h6 Common Logical Errors
+		
+		p.indented
+			:markdown
+				- Using single equals instead of double when comparing.
+					````javascript
+					var someVar = 0;
+
+					if (someVar = 1) {
+						console.log(true);
+					} else {
+					console.log(false);
+					}	
+					//$> true
+					````
+				- Infinite loops 
+					````javascript
+					for (var i=0;i<cars.length;i--) { 
+						document.write(cars[i] + "<br>");
+					}				
+					````
+				- off-by-one error (OBOE)
+					````javascript
+					var someArray = ['one', "two", "three", "four"];
+					for (i = 1; i < 5; i++) 
+					{
+						console.log(someArray[i]);
+					}
+					//$> two
+					//$> three
+					//$> four
+					//$> undefined
+					````
+		h3 Tools
+			
+		h4 Console
+		
+		h5 console.log() 
+		
+		Console.log()
+				
+		h6 console.error()
+			
+		h6 console.warn() 
+		
+		h6 console.assert() 
+				
+		h4 Debugger
+				
+		h5 Breakpoints
+		
+		h6 debugger;
+		
+		h6 In Debugger Screen
